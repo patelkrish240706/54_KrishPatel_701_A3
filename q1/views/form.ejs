@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+</head>
+
+<body>
+
+<h2>User Registration Form</h2>
+
+<% if (errors.length > 0) { %>
+
+    <h3>Errors:</h3>
+
+    <ul>
+        <% errors.forEach(function(error) { %>
+            <li><%= error.msg %></li>
+        <% }) %>
+    </ul>
+
+<% } %>
+
+<form action="/register" method="POST" enctype="multipart/form-data">
+
+    <label>Username:</label>
+    <input type="text" name="username"
+           value="<%= data.username || '' %>">
+
+    <br><br>
+
+    <label>Password:</label>
+    <input type="password" name="password">
+
+    <br><br>
+
+    <label>Confirm Password:</label>
+    <input type="password" name="confirmpassword">
+
+    <br><br>
+
+    <label>Email:</label>
+    <input type="text" name="email"
+           value="<%= data.email || '' %>">
+
+    <br><br>
+
+    <label>Gender:</label>
+
+    <input type="radio" name="gender" value="Male"
+        <%= data.gender === "Male" ? "checked" : "" %>>
+    Male
+
+    <input type="radio" name="gender" value="Female"
+        <%= data.gender === "Female" ? "checked" : "" %>>
+    Female
+
+    <br><br>
+
+    <label>Hobbies:</label>
+
+    <input type="checkbox" name="hobbies" value="Reading">
+    Reading
+
+    <input type="checkbox" name="hobbies" value="Music">
+    Music
+
+    <input type="checkbox" name="hobbies" value="Sports">
+    Sports
+
+    <br><br>
+
+    <label>Profile Picture:</label>
+    <input type="file" name="profilepic">
+
+    <br><br>
+
+    <label>Other Pictures:</label>
+    <input type="file" name="otherpics" multiple>
+
+    <br><br>
+
+    <button type="submit">Register</button>
+
+</form>
+
+</body>
+</html>
